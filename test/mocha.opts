@@ -1,0 +1,4 @@
+--ui bdd
+--require chai
+--reporter min
+--timeout 200
