@@ -1,8 +1,5 @@
-var Giraph = require('../../src/js/giraph');
-var expect = require('chai').expect;
-
-describe('Giraph', () => {
-  var gigraph;
+describe('Giraph', function() {
+  var giraph;
 
   describe('constructor', function() {
     it('can be constructed', function() {

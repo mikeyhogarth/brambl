@@ -1,6 +1,9 @@
 var d3    = require('d3-force');
 var graph = require('./data.json');
 
+var canvas = document.createElement('canvas');
+document.body.appendChild(canvas);
+
 var canvas = document.querySelector("canvas"),
     context = canvas.getContext("2d"),
     width = canvas.width,

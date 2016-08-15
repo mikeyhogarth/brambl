@@ -7,7 +7,9 @@ module.exports = {
   entry: "./src/bundle.js",
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "giraph.min.js"
+    filename: "giraph.min.js",
+    library: "Giraph",
+    libraryTarget: "umd" 
   },
 
   module: {

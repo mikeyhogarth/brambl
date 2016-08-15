@@ -1,9 +1,8 @@
 'use strict'
 
-
 class Giraph {
 
-  /* Create a 
+  /* Create an instance of a Giraph 
    *
    */
   constructor(options) {
