@@ -1,5 +1,3 @@
-'use strict'
-
 class Giraph {
 
   /* Create an instance of a Giraph 

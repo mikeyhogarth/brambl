@@ -1,6 +1,7 @@
 var webpack = require("webpack");
 var path = require("path");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var jsHintConfig = require('./jshint.config.js');
 
 module.exports = {
   context: __dirname,
@@ -17,8 +18,13 @@ module.exports = {
       { test: /\.(jade|pug)$/, loader: 'pug-loader' },
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader', query: { presets: ['es2015']}},
       { test: /\.json$/, exclude: /node_modules/, loader: 'json-loader'}
-    ]
+    ],
+    preLoaders: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "jshint-loader" }
+    ] 
   },
+
+  jshint: jsHintConfig,
 
   plugins: [
     new HtmlWebpackPlugin({ template: 'src/index.pug' }),
