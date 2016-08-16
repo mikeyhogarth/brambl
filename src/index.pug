@@ -3,5 +3,10 @@ html
   head
     title= "Giraph demo" 
   body
-    canvas(width=1000, height=500)
+    #container
+    script.
+      document.addEventListener("DOMContentLoaded", function(event) { 
+        var giraph = new Giraph('#container');
+      });
+
   
