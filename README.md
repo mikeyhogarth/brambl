@@ -5,6 +5,8 @@
 Pre-alpha
 [Demo](https://mikeyhogarth.github.io/giraph/)
 ```
-npm run serve
 npm test
+npm run test:watch
+npm run serve
+npm run deploy-demo
 ```
