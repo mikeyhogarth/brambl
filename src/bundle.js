@@ -1,2 +1,2 @@
 // Main export
-module.exports = require('./js/giraph.js');
+module.exports = require('./js/brambl.js');

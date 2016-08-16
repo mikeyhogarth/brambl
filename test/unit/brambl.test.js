@@ -1,4 +1,6 @@
-describe('Giraph', function() {
+describe('Brambl', function() {
+    
+  var brambl;
 
   beforeEach(function() {
     document.body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
@@ -9,18 +11,19 @@ describe('Giraph', function() {
   });
 
   describe('constructor', function() {
-    beforeEach(function() { giraph = new Giraph('#container') });
+
+    beforeEach(function() { brambl = new Brambl('#container') });
 
     it('instantiates the object', function() {
-      expect(giraph).to.be.instanceOf(Giraph);
+      expect(brambl).to.be.instanceOf(Brambl);
     });
 
     it('sets the .selector property to the passed in selector', function() {
-      expect(giraph.selector).to.equal('#container');
+      expect(brambl.selector).to.equal('#container');
     });
 
     it('sets the .container property to be the found container', function() {
-      expect(giraph.container.id).to.equal('container');
+      expect(brambl.container.id).to.equal('container');
     });
 
     it('creates a canvas element within the specified container', function() {

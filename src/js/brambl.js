@@ -1,9 +1,9 @@
 var d3    = require('d3-force');
 var graph = require('./data.json');
 
-class Giraph {
+class Brambl {
 
-  /* Create an instance of a Giraph 
+  /* Create an instance of a brambl 
    *
    */
   constructor(selector, options) {
@@ -69,4 +69,4 @@ class Giraph {
   
 }
 
-module.exports = Giraph; 
+module.exports = Brambl; 
