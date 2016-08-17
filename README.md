@@ -5,9 +5,11 @@
 
 Pre-alpha
 [Demo](https://mikeyhogarth.github.io/brambl/)
+
+#Build tasks
 ```
 npm test
+npm start
 npm run test:watch
-npm run serve
 npm run deploy-demo
 ```

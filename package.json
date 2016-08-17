@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "karma start",
     "test:watch": "karma start --no-single-run",
-    "serve": "webpack-dev-server",
-    "deploy-demo": "git subtree push --prefix dist origin gh-pages"
+    "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
   },
   "author": "",
   "license": "GPL-3.0",
