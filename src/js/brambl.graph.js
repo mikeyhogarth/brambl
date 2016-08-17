@@ -1,7 +1,7 @@
 var d3    = require('d3-force');
-var graph = require('./data.json');
+var data = require('./data.json');
 
-class Brambl {
+class Graph {
 
   /* Create an instance of a brambl 
    *
@@ -10,7 +10,6 @@ class Brambl {
     this.selector  = selector;
     this.options   = options || {};
     this.container = document.querySelector(selector);
-    this.initialize();
   }
 
   // Lots of horrible side effects in here at the moment - this is just
@@ -20,7 +19,7 @@ class Brambl {
   //
   // Don't judge me!!
   //
-  initialize() {
+  start() {
 
     var canvas = document.createElement('canvas');
     container.appendChild(canvas);
@@ -36,22 +35,22 @@ class Brambl {
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     simulation
-        .nodes(graph.nodes)
+        .nodes(data.nodes)
         .on("tick", redraw);
 
     simulation.force("link")
-        .links(graph.links)
+        .links(data.links)
         .distance(d =>  100);
 
     function redraw() {
       context.clearRect(0, 0, width, height);
 
       context.beginPath();
-      graph.links.forEach(drawLink);
+      data.links.forEach(drawLink);
       context.stroke();
 
       context.beginPath();
-      graph.nodes.forEach(drawNode);
+      data.nodes.forEach(drawNode);
       context.fill();
     }
 
@@ -69,4 +68,4 @@ class Brambl {
   
 }
 
-module.exports = Brambl; 
+module.exports = Graph; 

@@ -1,2 +1,4 @@
 // Main export
-module.exports = require('./js/brambl.js');
+module.exports = {
+  Graph: require('./js/brambl.graph.js')
+};
