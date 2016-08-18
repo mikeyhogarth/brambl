@@ -2,9 +2,14 @@ describe('Brambl.Graph', function() {
     
   var graph;
 
+  var exampleData = {
+    "nodes": [{id: "A"}, {id: "B"}],
+    "edges": [{source: "A", "target": "B"}]
+  };
+
   beforeEach(function() {
     document.body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
-    graph = new Brambl.Graph('#container');
+    graph = new Brambl.Graph('#container', exampleData);
   });
   
   afterEach(function() {
@@ -25,17 +30,24 @@ describe('Brambl.Graph', function() {
       expect(graph.container.id).to.equal('container');
     });
 
+    it('sets the .nodes property to be the nodes property of the passed in data', function() {
+      expect(graph.nodes).to.equal(exampleData.nodes);
+    });
+
+    it('sets the .edges property to be the edges property of the passed in data', function() {
+      expect(graph.edges).to.equal(exampleData.edges);
+    });
+
     it('does not alter the container', function() {
       expect(document.querySelector('#container').innerHTML).to.be.empty;
     });
-
   });
 
   describe('#start', function() {
     beforeEach(function() { graph.start() });
 
     it('creates a canvas element within the specified container', function() {
-      expect(document.querySelector('#container canvas')).to.not.be.null;
+      expect(document.querySelector('#container canvas')).to.not.be.blank;
     });
   });
 
