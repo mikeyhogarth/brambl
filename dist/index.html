@@ -1,4 +1,19 @@
 <!DOCTYPE html><html><head><title>Brambl demo</title></head><body><div id="container"></div><script>document.addEventListener("DOMContentLoaded", function(event) { 
-  var graph = new Brambl.Graph('#container');
+  var data = {
+    "nodes": [
+      {"id": "A"},
+      {"id": "B"},
+      {"id": "C"},
+      {"id": "D"}
+    ],
+    "edges": [
+      {"source": "A", "target": "B"},
+      {"source": "A", "target": "C"},
+      {"source": "A", "target": "D"},
+      {"source": "B", "target": "D"}
+    ]
+  }
+
+  var graph = new Brambl.Graph('#container', data);
   graph.start();
 });</script><script type="text/javascript" src="brambl.min.js"></script></body></html>

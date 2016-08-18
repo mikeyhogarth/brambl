@@ -6,7 +6,22 @@ html
     #container
     script.
       document.addEventListener("DOMContentLoaded", function(event) { 
-        var graph = new Brambl.Graph('#container');
+        var data = {
+          "nodes": [
+            {"id": "A"},
+            {"id": "B"},
+            {"id": "C"},
+            {"id": "D"}
+          ],
+          "edges": [
+            {"source": "A", "target": "B"},
+            {"source": "A", "target": "C"},
+            {"source": "A", "target": "D"},
+            {"source": "B", "target": "D"}
+          ]
+        }
+
+        var graph = new Brambl.Graph('#container', data);
         graph.start();
       });
 

@@ -1,15 +1,16 @@
 var d3    = require('d3-force');
-var data = require('./data.json');
 
 class Graph {
 
   /* Create an instance of a brambl 
    *
    */
-  constructor(selector, options) {
-    this.selector  = selector;
-    this.options   = options || {};
-    this.container = document.querySelector(selector);
+  constructor(selector, data = {}, options = {}) {
+    this.selector   = selector;
+    this.options    = options;
+    this.nodes      = data.nodes || [];
+    this.edges      = data.edges || [];
+    this.container  = document.querySelector(selector);
   }
 
   // Lots of horrible side effects in here at the moment - this is just
@@ -35,22 +36,22 @@ class Graph {
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     simulation
-        .nodes(data.nodes)
-        .on("tick", redraw);
+        .nodes(this.nodes)
+        .on("tick", redraw.bind(this));
 
     simulation.force("link")
-        .links(data.links)
+        .links(this.edges)
         .distance(d =>  100);
 
     function redraw() {
       context.clearRect(0, 0, width, height);
 
       context.beginPath();
-      data.links.forEach(drawLink);
+      this.edges.forEach(drawLink);
       context.stroke();
 
       context.beginPath();
-      data.nodes.forEach(drawNode);
+      this.nodes.forEach(drawNode);
       context.fill();
     }
 
