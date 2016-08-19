@@ -8,7 +8,7 @@ describe('Brambl.Graph', function() {
   };
 
   beforeEach(function() {
-    document.body.insertAdjacentHTML('afterbegin', '<div id="container"></div>');
+    document.body.insertAdjacentHTML('afterbegin', '<canvas id="container"></canvas>');
     graph = new Brambl.Graph('#container', exampleData);
   });
   
@@ -26,8 +26,8 @@ describe('Brambl.Graph', function() {
       expect(graph.selector).to.equal('#container');
     });
 
-    it('sets the .container property to be the found container', function() {
-      expect(graph.container.id).to.equal('container');
+    it('sets the .canvas property to be the found canvas', function() {
+      expect(graph.canvas.id).to.equal('container');
     });
 
     it('sets the .nodes property to be the nodes property of the passed in data', function() {
@@ -40,14 +40,6 @@ describe('Brambl.Graph', function() {
 
     it('does not alter the container', function() {
       expect(document.querySelector('#container').innerHTML).to.be.empty;
-    });
-  });
-
-  describe('#start', function() {
-    beforeEach(function() { graph.start() });
-
-    it('creates a canvas element within the specified container', function() {
-      expect(document.querySelector('#container canvas')).to.not.be.blank;
     });
   });
 

@@ -10,7 +10,8 @@ class Graph {
     this.options    = options;
     this.nodes      = data.nodes || [];
     this.edges      = data.edges || [];
-    this.container  = document.querySelector(selector);
+    this.canvas     = document.querySelector(selector);
+    this.simulation = null; 
   }
 
   // Lots of horrible side effects in here at the moment - this is just
@@ -21,30 +22,22 @@ class Graph {
   // Don't judge me!!
   //
   start() {
-
-    var canvas = document.createElement('canvas');
-    container.appendChild(canvas);
-
-    var context = canvas.getContext("2d");
-
-    var width = canvas.width = 1000;
-    var height = canvas.height = 500;
-
-    var simulation = d3.forceSimulation()
+    var context    = this.canvas.getContext("2d");
+    this.simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(d => d.id))
         .force("charge", d3.forceManyBody())
-        .force("center", d3.forceCenter(width / 2, height / 2));
+        .force("center", d3.forceCenter(this.canvas.width / 2, this.canvas.height / 2));
 
-    simulation
+    this.simulation
         .nodes(this.nodes)
         .on("tick", redraw.bind(this));
 
-    simulation.force("link")
+    this.simulation.force("link")
         .links(this.edges)
         .distance(d =>  100);
 
     function redraw() {
-      context.clearRect(0, 0, width, height);
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       context.beginPath();
       this.edges.forEach(drawLink);
