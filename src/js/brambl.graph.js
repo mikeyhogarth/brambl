@@ -27,12 +27,14 @@ class Graph {
         .force("center", d3.forceCenter(this.canvas.width / 2, this.canvas.height / 2));
 
     this.addNodes(this.nodes);
-
-    this.simulation.force("link")
-        .links(this.edges)
-        .distance(d =>  100);
+    this.addEdges(this.edges);
 
     this.simulation.on("tick", () => this.render());
+  }
+
+  addNode(node) {
+    this.nodes.push(node);
+    this.addNodes(this.nodes);
   }
 
   /**
@@ -40,6 +42,25 @@ class Graph {
    */
   addNodes(nodes) {
     this.simulation.nodes(this.nodes);
+  }
+
+  /**
+   * add Edge
+   */ 
+   addEdge(edge) {
+    this.edges.push(edge);
+    this.addEdges(this.edges);
+  }
+
+  /**
+   * add Edges
+   */ 
+  addEdges(edges) {
+    this.simulation.force("link")
+      .links(this.edges)
+      .distance(d =>  100);
+    
+    this.simulation.restart();
   }
 
   /**
